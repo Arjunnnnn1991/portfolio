@@ -1,0 +1,374 @@
+/* ==================================================================
+   Arjun Bartariya - Portfolio
+   Plain CSS, no frameworks. Dark theme with teal accent.
+   ================================================================== */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --bg: #0b0f1a;            /* page background */
+  --surface: #121826;       /* card background */
+  --surface-hover: #161e30; /* card hover background */
+  --border: #232b3d;        /* subtle 1px borders */
+  --text: #e8eaf0;          /* primary text */
+  --muted: #8b93a7;         /* secondary text */
+  --accent: #5eead4;        /* teal accent */
+  --accent-dark: #2dd4bf;   /* darker teal for gradients/hover */
+
+  --radius: 12px;
+  --transition: 0.25s ease;
+}
+
+/* ---------- Reset & base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+/* ---------- Sticky navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(11, 15, 26, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* ---------- Sections (shared) ---------- */
+.section {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 0;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 7rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-label {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.hero-name {
+  font-size: clamp(2.75rem, 9vw, 5.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.hero-location {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- Buttons ---------- */
+.hero-buttons,
+.contact-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform var(--transition), box-shadow var(--transition),
+    background-color var(--transition), color var(--transition);
+}
+
+.btn-filled {
+  background-color: var(--accent);
+  color: #0b0f1a;
+}
+
+.btn-filled:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 24px rgba(94, 234, 212, 0.35);
+}
+
+.btn-outline {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  transform: translateY(-3px);
+  background-color: rgba(94, 234, 212, 0.1);
+  box-shadow: 0 0 24px rgba(94, 234, 212, 0.2);
+}
+
+/* ---------- About ---------- */
+.about-text p {
+  max-width: 640px;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* ---------- Stats row ---------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.stat-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform var(--transition), background-color var(--transition),
+    border-color var(--transition), box-shadow var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  background-color: var(--surface-hover);
+  border-color: var(--accent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.stat-value {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Education timeline ---------- */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Vertical line running through the dots */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.4rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background-color: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -2rem;
+  top: 1.75rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 12px rgba(94, 234, 212, 0.5);
+}
+
+/* ---- From here on: written by me to match the HTML ---- */
+.timeline-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: transform var(--transition), background-color var(--transition),
+    border-color var(--transition);
+}
+
+.timeline-card:hover {
+  transform: translateY(-3px);
+  background-color: var(--surface-hover);
+  border-color: var(--accent);
+}
+
+.timeline-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-detail {
+  color: var(--muted);
+}
+
+.timeline-detail strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- Skills ---------- */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skill-chip {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: transform var(--transition), border-color var(--transition),
+    color var(--transition);
+}
+
+.skill-chip:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------- Contact ---------- */
+.contact {
+  padding-bottom: 5rem;
+}
+
+.contact-text {
+  max-width: 560px;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 800px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .nav {
+    padding: 0.85rem 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+
+  .section {
+    padding: 3.5rem 1rem 0;
+  }
+
+  .hero {
+    padding: 4rem 1rem 2.5rem;
+  }
+
+  .stats-grid {
+    gap: 0.85rem;
+  }
+}
